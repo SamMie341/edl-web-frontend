@@ -85,8 +85,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Disabled for Cloudflare Workers (@opennextjs/cloudflare) compatibility:
+  // Cache Components causes request hangs / HTTP 500 & 1101 on workerd.
+  // cacheComponents: true,
+  // partialPrefetching: true,
   experimental: {
     agentUpgrade: "security",
   },
