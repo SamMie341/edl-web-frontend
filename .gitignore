@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# api collections (prevent accidental exposure of internal API specs)
+*.postman_collection.json
+
 # vercel
 .vercel
 
