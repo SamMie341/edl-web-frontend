@@ -124,7 +124,7 @@ export function QuickServicesHub() {
                   <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#2329c1] transition-colors mb-1">
                     {item.title}
                   </h3>
-                  <div className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase mb-3">
+                  <div className="text-[11px] font-semibold tracking-wider text-slate-600 uppercase mb-3">
                     {item.titleEn}
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">

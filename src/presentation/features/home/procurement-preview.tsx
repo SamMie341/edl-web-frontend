@@ -156,7 +156,7 @@ export function ProcurementPreview({
                           <span>ດາວໂຫຼດ TOR (PDF)</span>
                         </a>
                       ) : (
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-600">
                           ຕິດຕໍ່ຫ້ອງການ ຟຟລ
                         </span>
                       )}
@@ -234,7 +234,7 @@ export function ProcurementPreview({
                     </div>
 
                     <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-slate-600">
                         ເລີ່ມ:{" "}
                         {job.startDate
                           ? formatLaoDate(job.startDate)

@@ -241,10 +241,10 @@ export function InteractiveBillCalculator() {
           <div className="mb-6 sm:mb-8 p-4 sm:p-5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <div className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                   1. ເລືອກຮອບບິນ / ເດືອນ (Billing Period)
-                </label>
-                <div className="text-xs text-slate-400 mt-0.5">
+                </div>
+                <div className="text-xs text-slate-600 mt-0.5">
                   ເລືອກປີ ແລະ ເດືອນທີ່ຕ້ອງການຄິດໄລ່ຄ່າໄຟຟ້າຕາມຕາຕະລາງລາຄາຂອງ ຟຟລ
                 </div>
               </div>
@@ -253,10 +253,15 @@ export function InteractiveBillCalculator() {
                 <div className="flex items-center justify-between sm:justify-start gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 sm:py-1.5 text-xs shadow-xs w-full sm:w-auto">
                   <div className="flex items-center gap-1.5">
                     <Calendar className="w-4 h-4 text-[#2329c1] shrink-0" />
-                    <span className="font-medium text-slate-500">ຮອບບິນ:</span>
+                    <span className="font-medium text-slate-600">ຮອບບິນ:</span>
                   </div>
                   <div className="flex items-center gap-1.5">
+                    <label htmlFor="home-calc-year" className="sr-only">
+                      ເລືອກປີ (Billing Year)
+                    </label>
                     <select
+                      id="home-calc-year"
+                      aria-label="ເລືອກປີ"
                       value={year}
                       onChange={(e) => setYear(Number(e.target.value))}
                       className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -267,7 +272,12 @@ export function InteractiveBillCalculator() {
                       <option value={2029}>ປີ 2029</option>
                     </select>
                     <span>/</span>
+                    <label htmlFor="home-calc-month" className="sr-only">
+                      ເລືອກເດືອນ (Billing Month)
+                    </label>
                     <select
+                      id="home-calc-month"
+                      aria-label="ເລືອກເດືອນ"
                       value={month}
                       onChange={(e) => setMonth(Number(e.target.value))}
                       className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -305,18 +315,19 @@ export function InteractiveBillCalculator() {
 
           {/* 2. Category Selection (2 Cascaded Dropdowns) */}
           <div className="mb-8">
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
+            <div className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
               2. ເລືອກປະເພດການຊົມໃຊ້ໄຟຟ້າ (Tariff Category)
-            </label>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Dropdown 1: Select Type */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                <label htmlFor="home-calc-type" className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
                   <span className="w-5 h-5 rounded-full bg-[#2329c1] text-white flex items-center justify-center text-[10px] font-black">1</span>
                   <span>Dropdown 1: ເລືອກປະເພດ (Select Category / Voltage)</span>
                 </label>
                 <select
+                  id="home-calc-type"
                   value={selectedType}
                   onChange={(e) => handleTypeChange(e.target.value)}
                   className="w-full bg-white border-2 border-slate-200 hover:border-[#2329c1]/50 focus:border-[#2329c1] rounded-2xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-[#2329c1]/10 transition-all cursor-pointer shadow-xs"
@@ -331,11 +342,12 @@ export function InteractiveBillCalculator() {
 
               {/* Dropdown 2: Select Data in that Type */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                <label htmlFor="home-calc-category" className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
                   <span className="w-5 h-5 rounded-full bg-[#2329c1] text-white flex items-center justify-center text-[10px] font-black">2</span>
                   <span>Dropdown 2: ເລືອກຂໍ້ມູນໃນປະເພດນັ້ນ (Select Category Item)</span>
                 </label>
                 <select
+                  id="home-calc-category"
                   value={selectedCategoryId}
                   onChange={(e) => setSelectedCategoryId(Number(e.target.value))}
                   className="w-full bg-white border-2 border-slate-200 hover:border-[#2329c1]/50 focus:border-[#2329c1] rounded-2xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-[#2329c1]/10 transition-all cursor-pointer shadow-xs"
@@ -373,7 +385,7 @@ export function InteractiveBillCalculator() {
                         </span>
                       </div>
                       {(selectedCategory.nameEn || selectedCategory.categoryGroup === "RESIDENTIAL") && (
-                        <div className="text-xs text-slate-400 mt-0.5">
+                        <div className="text-xs text-slate-600 mt-0.5">
                           {selectedCategory.nameEn || "Residential / Household"}
                         </div>
                       )}
@@ -383,7 +395,7 @@ export function InteractiveBillCalculator() {
                   {/* Active Rate Tag */}
                   {calculation?.currentBill && (
                     <div className="text-left sm:text-right flex-shrink-0 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200/80 w-full sm:w-auto">
-                      <div className="text-[10px] text-slate-400 font-medium">ອັດຕາຄິດໄລ່:</div>
+                      <div className="text-[10px] text-slate-600 font-medium">ອັດຕາຄິດໄລ່:</div>
                       <div className="text-sm font-black text-[#2329c1] font-mono">
                         {calculation.currentBill.tierBreakdown.length === 1
                           ? `${formatNumber(calculation.currentBill.tierBreakdown[0].rateKipPerKwh)} ກີບ/kWh`
@@ -418,16 +430,17 @@ export function InteractiveBillCalculator() {
           <div className="mb-8 sm:mb-10 bg-white p-4 sm:p-8 rounded-2xl border border-slate-200/80 shadow-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 sm:mb-6">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label htmlFor="home-calc-units-input" className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                   3. ລະບຸຈຳນວນໜ່ວຍໄຟຟ້າທີ່ໃຊ້ (kWh / Unit)
                 </label>
-                <div className="text-xs text-slate-400 mt-0.5">
+                <div className="text-xs text-slate-600 mt-0.5">
                   ເລື່ອນແຖບ ຫຼື ພິມຕົວເລກຈຳນວນໜ່ວຍຈາກໃບບິນ
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
                 <input
+                  id="home-calc-units-input"
                   type="number"
                   min="0"
                   max="5000"
@@ -435,26 +448,29 @@ export function InteractiveBillCalculator() {
                   onChange={(e) =>
                     setUnits(Math.max(0, parseInt(e.target.value) || 0))
                   }
+                  aria-label="ຈຳນວນໜ່ວຍໄຟຟ້າ (kWh)"
                   className="w-28 sm:w-32 text-right text-lg sm:text-xl font-extrabold text-[#2329c1] bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all font-mono"
                 />
-                <span className="font-bold text-sm text-slate-600">ໜ່ວຍ</span>
+                <span className="font-bold text-sm text-slate-700">ໜ່ວຍ</span>
               </div>
             </div>
 
             {/* Slider */}
             <input
+              id="home-calc-units-slider"
               type="range"
               min="0"
               max="1500"
               step="5"
               value={Math.min(units, 1500)}
               onChange={(e) => setUnits(Number(e.target.value))}
+              aria-label="ເລື່ອນປັບຈຳນວນໜ່ວຍໄຟຟ້າ (kWh)"
               className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2329c1]"
             />
 
             {/* Quick Presets */}
             <div className="flex flex-wrap items-center justify-between gap-2 mt-4 text-xs">
-              <span className="text-slate-400 font-medium">ຄ່າເລີ່ມຕົ້ນດ່ວນ:</span>
+              <span className="text-slate-600 font-medium">ຄ່າເລີ່ມຕົ້ນດ່ວນ:</span>
               <div className="flex flex-wrap gap-1.5">
                 {[25, 150, 300, 450, 600, 1000, 1500].map((val) => (
                   <button
@@ -484,7 +500,7 @@ export function InteractiveBillCalculator() {
                     <Info className="w-4 h-4 text-[#2329c1] shrink-0" />
                     <span className="truncate">ລາຍລະອຽດການຄິດໄລ່ 8 ຂັ້ນບັນໄດ ({selectedCategory.nameLa})</span>
                   </span>
-                  <span className="text-xs text-slate-400 font-mono shrink-0">
+                  <span className="text-xs text-slate-600 font-mono shrink-0">
                     {units} kWh
                   </span>
                 </div>
@@ -498,14 +514,14 @@ export function InteractiveBillCalculator() {
                         className={`flex items-center justify-between gap-2 text-xs p-2.5 rounded-xl border ${
                           kwhInTier > 0
                             ? "bg-slate-50 border-slate-200"
-                            : "bg-white border-slate-100 opacity-60"
+                            : "bg-white border-slate-100 opacity-75"
                         }`}
                       >
                         <div className="space-y-0.5 min-w-0">
                           <div className="font-semibold text-slate-800">
                             ຂັ້ນ {tier.tierOrder}: {tier.label}
                           </div>
-                          <div className="text-[11px] text-slate-400">
+                          <div className="text-[11px] text-slate-600">
                             {kwhInTier} ໜ່ວຍ × {formatNumber(tier.rateKipPerKwh)} ກີບ
                           </div>
                         </div>
@@ -608,7 +624,7 @@ export function InteractiveBillCalculator() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-10 text-slate-400 text-xs">
+            <div className="text-center py-10 text-slate-600 text-xs">
               {isLoading ? "ກຳລັງຄິດໄລ່ຜ່ານ API..." : "ບໍ່ສາມາດສະແດງຜົນການຄິດໄລ່ໄດ້"}
             </div>
           )}

@@ -179,7 +179,7 @@ export function NewsSection({ news, categories }: NewsSectionProps) {
 
                   <div className="flex-1 min-w-0 flex flex-col justify-between">
                     <div>
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-slate-400 mb-1">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-slate-600 mb-1">
                         <span className="text-[#2329c1] font-semibold">
                           {article.category?.categoryName}
                         </span>

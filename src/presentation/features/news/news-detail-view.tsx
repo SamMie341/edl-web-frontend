@@ -260,7 +260,7 @@ export function NewsDetailView({ news, relatedArticles }: NewsDetailViewProps) {
                     </div>
 
                     <div className="p-4">
-                      <div className="text-[11px] text-slate-400 mb-1 flex items-center gap-1">
+                      <div className="text-[11px] text-slate-600 mb-1 flex items-center gap-1">
                         <Calendar className="w-3 h-3 text-[#2329c1]" />
                         {formatLaoDate(rel.publishedAt || rel.publishedDate)}
                       </div>

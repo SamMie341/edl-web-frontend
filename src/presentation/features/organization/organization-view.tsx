@@ -147,7 +147,7 @@ export function OrganizationView({ structures }: OrganizationViewProps) {
             ໜ້າຫຼັກ
           </Link>
           <span>/</span>
-          <span className="text-slate-400">ກ່ຽວກັບ ຟຟລ</span>
+          <span className="text-slate-600">ກ່ຽວກັບ ຟຟລ</span>
           <span>/</span>
           <span className="text-[#2329c1] font-semibold">
             ໂຄງຮ່າງການຈັດຕັ້ງ
@@ -399,7 +399,7 @@ export function OrganizationView({ structures }: OrganizationViewProps) {
                 <h3 className="text-base font-bold text-slate-800 mb-1">
                   ກຳລັງອັບເດດແຜນຜັງໂຄງຮ່າງການຈັດຕັ້ງ
                 </h3>
-                <p className="text-xs text-slate-400 max-w-md mx-auto">
+                <p className="text-xs text-slate-600 max-w-md mx-auto">
                   ຂໍ້ມູນກຳລັງໄດ້ຮັບການປັບປຸງຜ່ານລະບົບ EDL Admin Management System.
                 </p>
               </div>
@@ -407,7 +407,7 @@ export function OrganizationView({ structures }: OrganizationViewProps) {
           </div>
 
           {/* Helper caption */}
-          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-400">
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-600">
             <span className="flex items-start sm:items-center gap-1.5">
               <Info className="w-3.5 h-3.5 text-[#2329c1] shrink-0 mt-0.5 sm:mt-0" />
               <span>

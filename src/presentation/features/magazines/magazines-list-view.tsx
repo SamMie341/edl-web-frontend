@@ -179,9 +179,10 @@ export function MagazinesListView({ magazines }: MagazinesListViewProps) {
               <input
                 type="text"
                 placeholder="ຄົ້ນຫາຊື່ວາລະສານ, ເລກທີສະບັບ ຫຼື ປີພິມ..."
+                aria-label="ຄົ້ນຫາຊື່ວາລະສານ, ເລກທີສະບັບ ຫຼື ປີພິມ"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
+                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
               />
             </div>
 
@@ -204,7 +205,7 @@ export function MagazinesListView({ magazines }: MagazinesListViewProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-100 text-xs">
-            <span className="text-slate-400 font-semibold mr-1">ປີພິມ:</span>
+            <span className="text-slate-600 font-semibold mr-1">ປີພິມ:</span>
             {yearOptions.map((year) => (
               <button
                 key={year}
@@ -212,13 +213,13 @@ export function MagazinesListView({ magazines }: MagazinesListViewProps) {
                 className={`px-3.5 py-1.5 rounded-full font-medium transition-all duration-200 active:scale-95 ${
                   selectedYear === year
                     ? "bg-[#2329c1] text-white shadow-md shadow-blue-700/25"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
               >
                 {year}
               </button>
             ))}
-            <span className="ml-auto text-slate-400 font-medium">
+            <span className="ml-auto text-slate-600 font-medium">
               ພົບ <strong>{formatNumber(filteredMagazines.length)}</strong> ສະບັບ
             </span>
           </div>
@@ -425,7 +426,7 @@ export function MagazinesListView({ magazines }: MagazinesListViewProps) {
                         <span>ດາວໂຫຼດ PDF</span>
                       </a>
                     ) : (
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-slate-600">
                         ບໍ່ມີໄຟລ໌ດາວໂຫຼດ
                       </span>
                     )}

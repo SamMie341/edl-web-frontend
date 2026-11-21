@@ -212,7 +212,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
           <div>
             © {year} ລັດວິສາຫະກິດໄຟຟ້າລາວ (Electricité du Laos). All rights reserved.
           </div>

@@ -100,15 +100,16 @@ export function NewsListView({
               <input
                 type="text"
                 placeholder="ຄົ້ນຫາຫົວຂໍ້ຂ່າວ, ເນື້ອໃນ ຫຼື ໝວດໝູ່ຂ່າວ..."
+                aria-label="ຄົ້ນຫາຫົວຂໍ້ຂ່າວ, ເນື້ອໃນ ຫຼື ໝວດໝູ່ຂ່າວ"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
+                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
               />
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 text-xs">
-            <span className="text-slate-400 font-semibold mr-1">ໝວດໝູ່:</span>
+            <span className="text-slate-600 font-semibold mr-1">ໝວດໝູ່:</span>
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -116,13 +117,13 @@ export function NewsListView({
                 className={`px-3.5 py-1.5 rounded-full font-medium transition-all duration-200 active:scale-95 ${
                   selectedCategory === cat
                     ? "bg-[#2329c1] text-white shadow-md shadow-blue-700/25 scale-105"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
               >
                 {cat}
               </button>
             ))}
-            <span className="ml-auto text-slate-400 font-medium">
+            <span className="ml-auto text-slate-600 font-medium">
               ພົບ <strong>{filteredNews.length}</strong> ບົດຄວາມ
             </span>
           </div>
@@ -153,13 +154,13 @@ export function NewsListView({
 
                 <div className="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-4 text-xs text-slate-400 mb-3">
-                      <span className="flex items-center gap-1.5 font-medium text-slate-600">
+                    <div className="flex items-center gap-4 text-xs text-slate-600 mb-3">
+                      <span className="flex items-center gap-1.5 font-medium text-slate-700">
                         <Calendar className="w-3.5 h-3.5 text-[#2329c1]" />
                         {formatLaoDate(featuredArticle.publishedAt || featuredArticle.publishedDate)}
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Eye className="w-3.5 h-3.5 text-slate-400" />
+                        <Eye className="w-3.5 h-3.5 text-slate-500" />
                         {formatNumber(featuredArticle.viewsCount || featuredArticle.viewCount || 0)} ຄົນອ່ານ
                       </span>
                     </div>
@@ -183,7 +184,7 @@ export function NewsListView({
                     <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                       ອ່ານບົດຄວາມເຕັມ <ArrowRight className="w-4 h-4 ml-1" />
                     </span>
-                    <span className="text-[11px] text-slate-400 font-normal">
+                    <span className="text-[11px] text-slate-600 font-normal">
                       ອັບເດດລ່າສຸດ
                     </span>
                   </div>
@@ -227,7 +228,7 @@ export function NewsListView({
 
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-3 text-[11px] text-slate-400 mb-2.5">
+                      <div className="flex items-center gap-3 text-[11px] text-slate-600 mb-2.5">
                         <span className="flex items-center gap-1 font-medium text-slate-500">
                           <Calendar className="w-3.5 h-3.5 text-[#2329c1]" />
                           {formatLaoDate(article.publishedAt || article.publishedDate)}

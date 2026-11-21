@@ -213,9 +213,10 @@ export function BranchesListView({ branches }: BranchesListViewProps) {
               <input
                 type="text"
                 placeholder="ຄົ້ນຫາຊື່ສາຂາ, ແຂວງ, ເມືອງ ຫຼື ເບີໂທລະສັບ..."
+                aria-label="ຄົ້ນຫາຊື່ສາຂາ, ແຂວງ, ເມືອງ ຫຼື ເບີໂທລະສັບ"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
+                className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#2329c1] focus:bg-white transition-all"
               />
             </div>
           </div>

@@ -499,7 +499,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">
+                  <div className="text-[11px] text-slate-600 mt-0.5">
                     {selectedTariffCategory.description ||
                       (selectedTariffCategory.categoryGroup === "RESIDENTIAL" ||
                       selectedTariffCategory.nameLa.includes("ທີ່ຢູ່ອາໄສ")
@@ -514,10 +514,15 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                 <div className="flex items-center justify-between sm:justify-start gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 sm:py-1.5 text-xs shadow-xs">
                   <div className="flex items-center gap-1.5">
                     <Calendar className="w-4 h-4 text-[#2329c1] shrink-0" />
-                    <span className="font-medium text-slate-500">ຮອບບິນ:</span>
+                    <span className="font-medium text-slate-600">ຮອບບິນ:</span>
                   </div>
                   <div className="flex items-center gap-1.5">
+                    <label htmlFor="calc-tab1-year" className="sr-only">
+                      ເລືອກປີ (Billing Year)
+                    </label>
                     <select
+                      id="calc-tab1-year"
+                      aria-label="ເລືອກປີ"
                       value={selectedYear}
                       onChange={(e) => setSelectedYear(Number(e.target.value))}
                       className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -528,7 +533,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                       <option value={2029}>ປີ 2029</option>
                     </select>
                     <span>/</span>
+                    <label htmlFor="calc-tab1-month" className="sr-only">
+                      ເລືອກເດືອນ (Billing Month)
+                    </label>
                     <select
+                      id="calc-tab1-month"
+                      aria-label="ເລືອກເດືອນ"
                       value={selectedMonth}
                       onChange={(e) => setSelectedMonth(Number(e.target.value))}
                       className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -544,7 +554,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
 
                 {/* 2 Cascaded Dropdowns for Tab 1 */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                  <label htmlFor="calc-tab1-type" className="sr-only">
+                    ເລືອກປະເພດແຮງດັນ (Select Category / Voltage)
+                  </label>
                   <select
+                    id="calc-tab1-type"
+                    aria-label="ເລືອກປະເພດແຮງດັນ"
                     value={selectedType}
                     onChange={(e) => handleTypeChange(e.target.value)}
                     className="w-full sm:w-auto bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 sm:py-1.5 text-slate-800 font-semibold cursor-pointer text-xs focus:ring-2 focus:ring-[#2329c1]/20 focus:border-[#2329c1]"
@@ -556,7 +571,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                     ))}
                   </select>
 
+                  <label htmlFor="calc-tab1-category" className="sr-only">
+                    ເລືອກຂໍ້ມູນໃນປະເພດນັ້ນ (Select Category Item)
+                  </label>
                   <select
+                    id="calc-tab1-category"
+                    aria-label="ເລືອກປະເພດຜູ້ຊົມໃຊ້"
                     value={selectedTariffCategoryId}
                     onChange={(e) => setSelectedTariffCategoryId(Number(e.target.value))}
                     className="w-full sm:w-auto sm:max-w-[240px] truncate bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 sm:py-1.5 text-slate-800 font-semibold cursor-pointer text-xs focus:ring-2 focus:ring-[#2329c1]/20 focus:border-[#2329c1]"
@@ -613,12 +633,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
             {calculationResult && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs">
-                  <div className="text-xs text-slate-500 font-medium">ໜ່ວຍໄຟຟ້າປັດຈຸບັນ (kWh)</div>
+                  <div className="text-xs text-slate-600 font-medium">ໜ່ວຍໄຟຟ້າປັດຈຸບັນ (kWh)</div>
                   <div className="text-2xl font-black text-slate-900 mt-1 font-mono">
                     {formatNumber(calculationResult.summary.totalMonthlyKwh)}{" "}
-                    <span className="text-xs text-slate-400 font-normal">kWh/ເດືອນ</span>
+                    <span className="text-xs text-slate-600 font-normal">kWh/ເດືອນ</span>
                   </div>
-                  <div className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <div className="text-[11px] text-slate-600 mt-1 flex items-center gap-1">
                     <span>ຂັ້ນສູງສຸດ:</span>
                     <span className="font-bold text-[#2329c1]">
                       ຂັ້ນທີ {calculationResult.summary.currentTierOrder}
@@ -627,10 +647,10 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                 </div>
 
                 <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs">
-                  <div className="text-xs text-slate-500 font-medium">ຫຼັງປັບແຜນປະຢັດ (After Plan)</div>
-                  <div className="text-2xl font-black text-emerald-600 mt-1 font-mono">
+                  <div className="text-xs text-slate-600 font-medium">ຫຼັງປັບແຜນປະຢັດ (After Plan)</div>
+                  <div className="text-2xl font-black text-emerald-700 mt-1 font-mono">
                     {formatNumber(calculationResult.summary.afterPlanKwh)}{" "}
-                    <span className="text-xs text-slate-400 font-normal">kWh/ເດືອນ</span>
+                    <span className="text-xs text-slate-600 font-normal">kWh/ເດືອນ</span>
                   </div>
                   <div className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-semibold">
                     <TrendingDown className="w-3.5 h-3.5" />
@@ -639,12 +659,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                 </div>
 
                 <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs">
-                  <div className="text-xs text-slate-500 font-medium">ຍອດຄ່າໄຟປະຈຸບັນ (ລວມ VAT)</div>
+                  <div className="text-xs text-slate-600 font-medium">ຍອດຄ່າໄຟປະຈຸບັນ (ລວມ VAT)</div>
                   <div className="text-2xl font-black text-slate-900 mt-1 font-mono">
                     {formatNumber(calculationResult.summary.totalCostKip)}{" "}
-                    <span className="text-xs text-slate-400 font-normal">ກີບ</span>
+                    <span className="text-xs text-slate-600 font-normal">ກີບ</span>
                   </div>
-                  <div className="text-[11px] text-slate-400 mt-1">
+                  <div className="text-[11px] text-slate-600 mt-1">
                     VAT{" "}
                     {Math.round(
                       (calculationResult.currentBill.vatRate ??
@@ -686,14 +706,14 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                       <Plus className="w-4 h-4 text-[#2329c1]" />
                       <span>ເລືອກເພີ່ມເຄື່ອງໃຊ້ໄຟຟ້າ</span>
                     </h3>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-slate-600">
                       ມີ {appliances.length} ລາຍການ
                     </span>
                   </div>
 
                   {/* Category Pills */}
                   {config.categories.length === 0 ? (
-                    <div className="text-center py-6 text-xs text-slate-400">
+                    <div className="text-center py-6 text-xs text-slate-600">
                       ບໍ່ພົບຂໍ້ມູນປະເພດເຄື່ອງໃຊ້ໄຟຟ້າໃນຖານຂໍ້ມູນ API
                     </div>
                   ) : (
@@ -725,7 +745,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                     );
                     if (!activeCat || activeCat.presets.length === 0) {
                       return (
-                        <p className="text-xs text-slate-400 py-2">
+                        <p className="text-xs text-slate-600 py-2">
                           ຍັງບໍ່ມີ Preset ໃນໝວດນີ້
                         </p>
                       );
@@ -748,7 +768,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                 <div className="font-semibold text-slate-800 group-hover:text-[#2329c1]">
                                   {preset.nameLa}
                                 </div>
-                                <div className="text-[11px] text-slate-400">
+                                <div className="text-[11px] text-slate-600">
                                   {preset.defaultWatt}W • {preset.defaultHoursPerDay}h/ມື້
                                 </div>
                               </div>
@@ -779,7 +799,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                   </div>
 
                   {appliances.length === 0 ? (
-                    <div className="text-center py-10 text-slate-400 text-xs">
+                    <div className="text-center py-10 text-slate-600 text-xs">
                       ກະລຸນາເລືອກເພີ່ມເຄື່ອງໃຊ້ໄຟຟ້າຈາກກ່ອງຂ້າງເທິງ
                     </div>
                   ) : (
@@ -799,7 +819,9 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                   {idx + 1}
                                 </span>
                                 <input
+                                  id={`appliance-name-${idx}`}
                                   type="text"
+                                  aria-label={`ຊື່ເຄື່ອງໃຊ້ໄຟຟ້າລາຍການທີ ${idx + 1}`}
                                   value={app.customName ?? ""}
                                   onChange={(e) =>
                                     handleUpdateAppliance(
@@ -816,15 +838,16 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                   <span className="font-black text-slate-900 font-mono text-sm">
                                     {formatNumber(monthlyKwh)}
                                   </span>{" "}
-                                  <span className="text-[10px] text-slate-400">
+                                  <span className="text-[10px] text-slate-600">
                                     kWh/ເດືອນ
                                   </span>
                                 </div>
                                 <button
                                   type="button"
                                   onClick={() => handleRemoveAppliance(idx)}
-                                  className="text-slate-400 hover:text-rose-500 transition-colors p-1"
+                                  className="text-slate-600 hover:text-rose-600 transition-colors p-1.5 min-w-[28px] min-h-[28px] flex items-center justify-center"
                                   title="ລຶບລາຍການນີ້"
+                                  aria-label={`ລຶບລາຍການທີ ${idx + 1}`}
                                 >
                                   <Trash2 className="w-4 h-4" />
                                 </button>
@@ -834,8 +857,11 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                             {/* Quick inputs row: Watt, Quantity, Hours/day */}
                             <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-1 border-t border-slate-200/60 text-[10px] sm:text-[11px]">
                               <div>
-                                <span className="text-slate-400 block mb-0.5">ກຳລັງໄຟ (Watt)</span>
+                                <label htmlFor={`appliance-watt-${idx}`} className="text-slate-600 block mb-0.5">
+                                  ກຳລັງໄຟ (Watt)
+                                </label>
                                 <input
+                                  id={`appliance-watt-${idx}`}
                                   type="number"
                                   min="1"
                                   value={app.watt}
@@ -850,8 +876,11 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                 />
                               </div>
                               <div>
-                                <span className="text-slate-400 block mb-0.5">ຈຳນວນເຄື່ອງ</span>
+                                <label htmlFor={`appliance-qty-${idx}`} className="text-slate-600 block mb-0.5">
+                                  ຈຳນວນເຄື່ອງ
+                                </label>
                                 <input
+                                  id={`appliance-qty-${idx}`}
                                   type="number"
                                   min="1"
                                   value={app.quantity}
@@ -866,8 +895,11 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                 />
                               </div>
                               <div>
-                                <span className="text-slate-400 block mb-0.5">ຊົ່ວໂມງ/ມື້</span>
+                                <label htmlFor={`appliance-hours-${idx}`} className="text-slate-600 block mb-0.5">
+                                  ຊົ່ວໂມງ/ມື້
+                                </label>
                                 <input
+                                  id={`appliance-hours-${idx}`}
                                   type="number"
                                   step="0.5"
                                   min="0.1"
@@ -900,7 +932,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                           <Sparkles className="w-4 h-4 text-amber-500" />
                           <span>ແຜນວິທີປະຢັດໄຟອັດສະລິຍະ (Smart Saving Plan)</span>
                         </h3>
-                        <p className="text-xs text-slate-400 mt-0.5">
+                        <p className="text-xs text-slate-600 mt-0.5">
                           ຕິກເລືອກວິທີທີ່ທ່ານຕ້ອງການປະຕິບັດເພື່ອເບິ່ງຜົນການຫຼຸດລົງຂອງຄ່າໄຟທັນທີ
                         </p>
                       </div>
@@ -944,7 +976,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                               <div className="text-[11px] text-slate-500 mt-0.5">
                                 {rec.descriptionLa}
                               </div>
-                              <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-400">
+                              <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-600">
                                 {(rec.applianceName || rec.appliedApplianceCount) && (
                                   <>
                                     <span className="px-2 py-0.5 rounded-md bg-slate-200/70 text-slate-700">
@@ -999,7 +1031,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                                 {formatNumber(tier.costKip)} ກີບ
                               </span>
                             </div>
-                            <div className="flex items-center justify-between text-[11px] text-slate-400">
+                            <div className="flex items-center justify-between text-[11px] text-slate-600">
                               <span>
                                 {kwhInTier} kWh × {formatNumber(tier.rateKipPerKwh)} ກີບ/kWh
                               </span>
@@ -1074,13 +1106,13 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                           {formatNumber(calculationResult.currentBill.totalCostKip)} ກີບ
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-400 mt-1">
+                      <div className="text-[11px] text-slate-600 mt-1">
                         * ຄິດໄລ່ຕາມສູດ: (ຄ່າໄຟລວມ + ຄ່າບຳລຸງຮັກສາ) + VAT
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-white rounded-3xl p-8 border border-slate-200/80 text-center text-xs text-slate-400">
+                  <div className="bg-white rounded-3xl p-8 border border-slate-200/80 text-center text-xs text-slate-600">
                     {isCalculating ? "ກຳລັງດຶງຂໍ້ມູນການຄິດໄລ່ຈາກ API..." : "ບໍ່ມີຂໍ້ມູນການຄິດໄລ່"}
                   </div>
                 )}
@@ -1158,10 +1190,10 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
             <div className="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-200/80 shadow-xs">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <div className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                     1. ເລືອກຮອບບິນ / ເດືອນ (Billing Period)
-                  </label>
-                  <div className="text-xs text-slate-400 mt-0.5">
+                  </div>
+                  <div className="text-xs text-slate-600 mt-0.5">
                     ເລືອກປີ ແລະ ເດືອນທີ່ຕ້ອງການຄິດໄລ່ຄ່າໄຟຟ້າຕາມຕາຕະລາງລາຄາຂອງ ຟຟລ
                   </div>
                 </div>
@@ -1170,10 +1202,15 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                   <div className="flex items-center justify-between sm:justify-start gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 sm:py-1.5 text-xs shadow-xs w-full sm:w-auto">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="w-4 h-4 text-[#2329c1] shrink-0" />
-                      <span className="font-medium text-slate-500">ຮອບບິນ:</span>
+                      <span className="font-medium text-slate-600">ຮອບບິນ:</span>
                     </div>
                     <div className="flex items-center gap-1.5">
+                      <label htmlFor="calc-tab2-year" className="sr-only">
+                        ເລືອກປີ (Billing Year)
+                      </label>
                       <select
+                        id="calc-tab2-year"
+                        aria-label="ເລືອກປີ"
                         value={selectedYear}
                         onChange={(e) => setSelectedYear(Number(e.target.value))}
                         className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -1184,7 +1221,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                         <option value={2029}>ປີ 2029</option>
                       </select>
                       <span>/</span>
+                      <label htmlFor="calc-tab2-month" className="sr-only">
+                        ເລືອກເດືອນ (Billing Month)
+                      </label>
                       <select
+                        id="calc-tab2-month"
+                        aria-label="ເລືອກເດືອນ"
                         value={selectedMonth}
                         onChange={(e) => setSelectedMonth(Number(e.target.value))}
                         className="bg-transparent text-slate-800 font-bold focus:outline-none cursor-pointer text-xs"
@@ -1222,18 +1264,19 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
 
             {/* 2. Category Selection (2 Cascaded Dropdowns) */}
             <div className="mb-8">
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
+              <div className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
                 2. ເລືອກປະເພດການຊົມໃຊ້ໄຟຟ້າ (Tariff Category - Module 3.22.1)
-              </label>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Dropdown 1: Select Type */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                  <label htmlFor="calc-tab2-type" className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
                     <span className="w-5 h-5 rounded-full bg-[#2329c1] text-white flex items-center justify-center text-[10px] font-black">1</span>
                     <span>Dropdown 1: ເລືອກປະເພດ (Select Category / Voltage)</span>
                   </label>
                   <select
+                    id="calc-tab2-type"
                     value={selectedType}
                     onChange={(e) => handleTypeChange(e.target.value)}
                     className="w-full bg-white border-2 border-slate-200 hover:border-[#2329c1]/50 focus:border-[#2329c1] rounded-2xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-[#2329c1]/10 transition-all cursor-pointer shadow-xs"
@@ -1248,11 +1291,12 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
 
                 {/* Dropdown 2: Select Data in that Type */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                  <label htmlFor="calc-tab2-category" className="block text-xs font-bold text-slate-700 flex items-center gap-1.5">
                     <span className="w-5 h-5 rounded-full bg-[#2329c1] text-white flex items-center justify-center text-[10px] font-black">2</span>
                     <span>Dropdown 2: ເລືອກຂໍ້ມູນໃນປະເພດນັ້ນ (Select Category Item)</span>
                   </label>
                   <select
+                    id="calc-tab2-category"
                     value={selectedTariffCategoryId}
                     onChange={(e) => setSelectedTariffCategoryId(Number(e.target.value))}
                     className="w-full bg-white border-2 border-slate-200 hover:border-[#2329c1]/50 focus:border-[#2329c1] rounded-2xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-[#2329c1]/10 transition-all cursor-pointer shadow-xs"
@@ -1290,13 +1334,13 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                           </span>
                         </div>
                         {selectedTariffCategory.nameEn ? (
-                          <div className="text-xs text-slate-400 mt-0.5">
+                          <div className="text-xs text-slate-600 mt-0.5">
                             {selectedTariffCategory.nameEn}
                           </div>
                         ) : (
                           (selectedTariffCategory.categoryGroup === "RESIDENTIAL" ||
                             selectedTariffCategory.nameLa.includes("ທີ່ຢູ່ອາໄສ")) && (
-                            <div className="text-xs text-slate-400 mt-0.5">
+                            <div className="text-xs text-slate-600 mt-0.5">
                               Residential / Household
                             </div>
                           )
@@ -1307,7 +1351,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                     {/* Active Rate Tag */}
                     {quickResult?.currentBill && (
                       <div className="text-left sm:text-right flex-shrink-0 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200/80 w-full sm:w-auto">
-                        <div className="text-[10px] text-slate-400 font-medium">ອັດຕາຄິດໄລ່:</div>
+                        <div className="text-[10px] text-slate-600 font-medium">ອັດຕາຄິດໄລ່:</div>
                         <div className="text-sm font-black text-[#2329c1] font-mono">
                           {quickResult.currentBill.tierBreakdown.length === 1
                             ? `${formatNumber(quickResult.currentBill.tierBreakdown[0].rateKipPerKwh)} ກີບ/kWh`
@@ -1342,16 +1386,17 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
             <div className="mb-8 sm:mb-10 bg-slate-50 p-4 sm:p-8 rounded-2xl border border-slate-200/80">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 sm:mb-6">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label htmlFor="calc-tab2-units-input" className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                     3. ລະບຸຈຳນວນໜ່ວຍໄຟຟ້າທີ່ໃຊ້ (kWh / Unit)
                   </label>
-                  <div className="text-xs text-slate-400 mt-0.5">
+                  <div className="text-xs text-slate-600 mt-0.5">
                     ເລື່ອນແຖບ ຫຼື ພິມຕົວເລກຈຳນວນໜ່ວຍຈາກໃບບິນ
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <input
+                    id="calc-tab2-units-input"
                     type="number"
                     min="0"
                     max="5000"
@@ -1359,26 +1404,29 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                     onChange={(e) =>
                       setQuickUnits(Math.max(0, parseInt(e.target.value) || 0))
                     }
+                    aria-label="ຈຳນວນໜ່ວຍໄຟຟ້າ (kWh)"
                     className="w-28 sm:w-32 text-right text-lg sm:text-xl font-extrabold text-[#2329c1] bg-white border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#2329c1] font-mono"
                   />
-                  <span className="font-bold text-sm text-slate-600">ໜ່ວຍ</span>
+                  <span className="font-bold text-sm text-slate-700">ໜ່ວຍ</span>
                 </div>
               </div>
 
               {/* Slider */}
               <input
+                id="calc-tab2-units-slider"
                 type="range"
                 min="0"
                 max="2000"
                 step="5"
                 value={Math.min(quickUnits, 2000)}
                 onChange={(e) => setQuickUnits(Number(e.target.value))}
+                aria-label="ເລື່ອນປັບຈຳນວນໜ່ວຍໄຟຟ້າ (kWh)"
                 className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2329c1]"
               />
 
               {/* Quick Presets */}
               <div className="flex flex-wrap items-center justify-between gap-2 mt-4 text-xs">
-                <span className="text-slate-400 font-medium">ຄ່າເລີ່ມຕົ້ນດ່ວນ:</span>
+                <span className="text-slate-600 font-medium">ຄ່າເລີ່ມຕົ້ນດ່ວນ:</span>
                 <div className="flex flex-wrap gap-1.5">
                   {[25, 150, 300, 450, 750, 1200, 1600].map((val) => (
                     <button
@@ -1407,7 +1455,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                       <Info className="w-4 h-4 text-[#2329c1] shrink-0" />
                       <span className="truncate">ລາຍລະອຽດການຄິດໄລ່ຕາມຂັ້ນໄດ 8 ຂັ້ນ (API ຈິງ)</span>
                     </span>
-                    <span className="text-xs text-slate-400 font-mono shrink-0">
+                    <span className="text-xs text-slate-600 font-mono shrink-0">
                       {quickUnits} kWh
                     </span>
                   </div>
@@ -1420,14 +1468,14 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                           key={tier.tierOrder}
                           className={`flex items-center justify-between gap-2 text-xs p-2.5 rounded-xl border ${kwhInTier > 0
                             ? "bg-slate-50 border-slate-200"
-                            : "bg-white border-slate-100 opacity-60"
+                            : "bg-white border-slate-100 opacity-75"
                             }`}
                         >
                           <div className="space-y-0.5 min-w-0">
                             <div className="font-semibold text-slate-800">
                               ຂັ້ນ {tier.tierOrder}: {tier.label}
                             </div>
-                            <div className="text-[11px] text-slate-400">
+                            <div className="text-[11px] text-slate-600">
                               {kwhInTier} ໜ່ວຍ × {formatNumber(tier.rateKipPerKwh)} ກີບ
                             </div>
                           </div>
@@ -1532,7 +1580,7 @@ export function CalculatorView({ initialConfig, initialError }: CalculatorViewPr
                 </div>
               </div>
             ) : (
-              <div className="text-center py-10 text-slate-400 text-xs">
+              <div className="text-center py-10 text-slate-600 text-xs">
                 {isQuickCalculating ? "ກຳລັງຄິດໄລ່ຜ່ານ API..." : "ບໍ່ສາມາດຄິດໄລ່ໄດ້"}
               </div>
             )}

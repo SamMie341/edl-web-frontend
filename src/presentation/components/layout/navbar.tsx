@@ -144,7 +144,7 @@ export function Navbar() {
                     <Building2 className="w-4 h-4 text-[#2329c1]" />
                     <div>
                       <div className="font-medium">ວິໄສທັດ ແລະ ພາລະກິດ</div>
-                      <div className="text-xs text-slate-400">Vision & Mission</div>
+                      <div className="text-xs text-slate-600">Vision & Mission</div>
                     </div>
                   </Link>
                   <Link
@@ -155,7 +155,7 @@ export function Navbar() {
                     <Zap className="w-4 h-4 text-amber-500" />
                     <div>
                       <div className="font-medium">ໂຄງຮ່າງການຈັດຕັ້ງ</div>
-                      <div className="text-xs text-slate-400">Organization Structure</div>
+                      <div className="text-xs text-slate-600">Organization Structure</div>
                     </div>
                   </Link>
                   <Link
@@ -166,7 +166,7 @@ export function Navbar() {
                     <FileText className="w-4 h-4 text-emerald-600" />
                     <div>
                       <div className="font-medium">ປະຫວັດຄວາມເປັນມາ</div>
-                      <div className="text-xs text-slate-400">History of EDL</div>
+                      <div className="text-xs text-slate-600">History of EDL</div>
                     </div>
                   </Link>
                 </div>
@@ -202,7 +202,7 @@ export function Navbar() {
                     <Zap className="w-4 h-4 text-[#2329c1]" />
                     <div>
                       <div className="font-medium">ອັດຕາຄ່າກະແສໄຟຟ້າ</div>
-                      <div className="text-xs text-slate-400">ຕາຕະລາງລາຄາທາງການ & ດາວໂຫຼດ PDF</div>
+                      <div className="text-xs text-slate-600">ຕາຕະລາງລາຄາທາງການ & ດາວໂຫຼດ PDF</div>
                     </div>
                   </Link>
                   <Link
@@ -213,7 +213,7 @@ export function Navbar() {
                     <Building2 className="w-4 h-4 text-emerald-600" />
                     <div>
                       <div className="font-medium">ສາຂາ & ສູນບໍລິການ 18 ແຂວງ</div>
-                      <div className="text-xs text-slate-400">ຄົ້ນຫາທີ່ຕັ້ງ, ເບີໂທຕິດຕໍ່ ແລະ ແຜນທີ່</div>
+                      <div className="text-xs text-slate-600">ຄົ້ນຫາທີ່ຕັ້ງ, ເບີໂທຕິດຕໍ່ ແລະ ແຜນທີ່</div>
                     </div>
                   </Link>
                   <Link
@@ -224,7 +224,7 @@ export function Navbar() {
                     <FileText className="w-4 h-4 text-amber-500" />
                     <div>
                       <div className="font-medium">ຄຳນວນຄ່າໄຟຟ້າອັດສະລິຍະ</div>
-                      <div className="text-xs text-slate-400">ໂປຣແກຣມຈຳລອງຄິດໄລ່ຄ່າໄຟ 8 ຂັ້ນ</div>
+                      <div className="text-xs text-slate-600">ໂປຣແກຣມຈຳລອງຄິດໄລ່ຄ່າໄຟ 8 ຂັ້ນ</div>
                     </div>
                   </Link>
                 </div>
@@ -301,15 +301,17 @@ export function Navbar() {
             <div className="max-w-2xl mx-auto flex items-center gap-2 sm:gap-3 bg-white border border-slate-200 rounded-full px-3.5 sm:px-4 py-2 shadow-inner">
               <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 shrink-0" />
               <input
+                id="navbar-search-input"
                 type="text"
                 placeholder="ຄົ້ນຫາຂ່າວສານ, ປະກາດປະມູນ, ອັດຕາຄ່າໄຟຟ້າ..."
-                className="min-w-0 w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none"
+                aria-label="ຄົ້ນຫາຂ່າວສານ, ປະກາດປະມູນ, ອັດຕາຄ່າໄຟຟ້າ"
+                className="min-w-0 w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-500 focus:outline-none"
                 autoFocus
               />
               <button
                 type="button"
                 onClick={() => setSearchOpen(false)}
-                className="text-xs text-slate-400 hover:text-slate-600 p-1 shrink-0"
+                className="text-xs text-slate-600 hover:text-slate-900 px-2.5 py-1.5 min-h-[32px] shrink-0"
               >
                 ປິດ
               </button>

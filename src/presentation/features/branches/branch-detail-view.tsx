@@ -294,7 +294,7 @@ export function BranchDetailView({
                     alt={`ໂຄງຮ່າງການຈັດຕັ້ງ ${branch.branchName}`}
                     className="w-full h-auto object-contain rounded-xl max-h-[600px] mx-auto group-hover:scale-[1.01] transition-transform duration-300"
                   />
-                  <div className="mt-3 text-center text-xs text-slate-400 group-hover:text-[#2329c1] flex items-center justify-center gap-1 transition-colors">
+                  <div className="mt-3 text-center text-xs text-slate-600 group-hover:text-[#2329c1] flex items-center justify-center gap-1 transition-colors">
                     <ExternalLink className="w-3.5 h-3.5" />
                     <span>ກົດເພື່ອເປີດເບິ່ງແຜນຜັງເຕັມຈໍໃນແທັບໃໝ່</span>
                   </div>
@@ -322,9 +322,10 @@ export function BranchDetailView({
                     <input
                       type="text"
                       placeholder="ຄົ້ນຫາຊື່ເມືອງ ຫຼື ສູນ..."
+                      aria-label="ຄົ້ນຫາຊື່ເມືອງ ຫຼື ສູນບໍລິການ"
                       value={centerSearch}
                       onChange={(e) => setCenterSearch(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2329c1]"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#2329c1]"
                     />
                   </div>
                 )}
@@ -345,7 +346,7 @@ export function BranchDetailView({
                               : "ຫ້ອງການເມືອງ"}
                           </span>
                           {center.village?.name && (
-                            <span className="text-[11px] text-slate-400">
+                            <span className="text-[11px] text-slate-600">
                               ບ້ານ {center.village.name}
                             </span>
                           )}
@@ -375,7 +376,7 @@ export function BranchDetailView({
                             <span>ໂທອອກ</span>
                           </a>
                         ) : (
-                          <div className="flex-1 text-[11px] text-slate-400">
+                          <div className="flex-1 text-[11px] text-slate-600">
                             ສາຍດ່ວນ 1199
                           </div>
                         )}
@@ -389,8 +390,9 @@ export function BranchDetailView({
                               center.id
                             )
                           }
-                          className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-500 hover:text-[#2329c1] transition-colors"
+                          className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:text-[#2329c1] transition-colors"
                           title="ສຳເນົາຂໍ້ມູນ"
+                          aria-label={`ສຳເນົາຂໍ້ມູນ ${center.centerName}`}
                         >
                           {copiedCenterId === center.id ? (
                             <Check className="w-3.5 h-3.5 text-emerald-600" />
@@ -403,7 +405,7 @@ export function BranchDetailView({
                   ))}
                 </div>
               ) : (
-                <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                <div className="p-8 text-center text-xs text-slate-600 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
                   {centerSearch
                     ? "ບໍ່ພົບສູນບໍລິການທີ່ຄົ້ນຫາ"
                     : "ຍັງບໍ່ມີຂໍ້ມູນສູນບໍລິການຍ່ອຍໃນລະບົບ"}
@@ -423,7 +425,7 @@ export function BranchDetailView({
 
               <div className="space-y-3.5 text-xs text-slate-600">
                 <div>
-                  <span className="text-[11px] font-semibold text-slate-400 block mb-0.5">
+                  <span className="text-[11px] font-semibold text-slate-600 block mb-0.5">
                     ເບີໂທລະສັບຕິດຕໍ່:
                   </span>
                   <div className="space-y-1">
@@ -433,7 +435,7 @@ export function BranchDetailView({
                         href={`tel:${ph.trim()}`}
                         className="font-bold text-[#2329c1] hover:underline flex items-center gap-1.5"
                       >
-                        <Phone className="w-3.5 h-3.5 text-slate-400" />
+                        <Phone className="w-3.5 h-3.5 text-slate-500" />
                         <span>{ph.trim()}</span>
                       </a>
                     ))}
@@ -441,7 +443,7 @@ export function BranchDetailView({
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-semibold text-slate-400 block mb-0.5">
+                  <span className="text-[11px] font-semibold text-slate-600 block mb-0.5">
                     ທີ່ຕັ້ງສຳນັກງານ:
                   </span>
                   <p className="leading-relaxed">
@@ -451,25 +453,25 @@ export function BranchDetailView({
 
                 {branch.email && (
                   <div>
-                    <span className="text-[11px] font-semibold text-slate-400 block mb-0.5">
+                    <span className="text-[11px] font-semibold text-slate-600 block mb-0.5">
                       ອີເມວຕິດຕໍ່:
                     </span>
                     <a
                       href={`mailto:${branch.email}`}
                       className="text-[#2329c1] hover:underline flex items-center gap-1.5 min-w-0"
                     >
-                      <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                       <span className="break-all">{branch.email}</span>
                     </a>
                   </div>
                 )}
 
                 <div>
-                  <span className="text-[11px] font-semibold text-slate-400 block mb-0.5">
+                  <span className="text-[11px] font-semibold text-slate-600 block mb-0.5">
                     ໂມງລັດຖະການ:
                   </span>
                   <p className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    <Clock className="w-3.5 h-3.5 text-slate-500" />
                     <span>ຈັນ - ສຸກ: 08:00 - 16:30 ໂມງ</span>
                   </p>
                 </div>
@@ -530,7 +532,7 @@ export function BranchDetailView({
                         <div className="text-xs font-bold text-slate-800 group-hover:text-[#2329c1] truncate">
                           {other.branchName}
                         </div>
-                        <div className="text-[11px] text-slate-400 truncate">
+                        <div className="text-[11px] text-slate-600 truncate">
                           {other.province?.name || other.address || "ສາຂາ ຟຟລ"}
                         </div>
                       </div>

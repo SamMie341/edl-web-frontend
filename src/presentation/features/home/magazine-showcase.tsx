@@ -124,7 +124,7 @@ export function MagazineShowcase({ magazines }: MagazineShowcaseProps) {
 
                 {/* Footer Download Link */}
                 <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-600">
                     <Eye className="w-3.5 h-3.5" />
                     <span>{formatNumber(getDownloadCount(mag))} ດາວໂຫຼດ</span>
                   </div>
@@ -139,7 +139,7 @@ export function MagazineShowcase({ magazines }: MagazineShowcaseProps) {
                       <span>ດາວໂຫຼດ PDF</span>
                     </a>
                   ) : (
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-slate-600">
                       ບໍ່ມີໄຟລ໌ດາວໂຫຼດ
                     </span>
                   )}

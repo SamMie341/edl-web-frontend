@@ -116,7 +116,7 @@ export default async function TariffsPage() {
           </div>
 
           {apiTariffs.length === 0 ? (
-            <p className="text-sm text-slate-400 py-6 text-center">
+            <p className="text-sm text-slate-600 py-6 text-center">
               ຍັງບໍ່ມີຂໍ້ມູນປະກາດອັດຕາຄ່າໄຟຟ້າໃນຂະນະນີ້
             </p>
           ) : (
@@ -131,7 +131,7 @@ export default async function TariffsPage() {
                       <span className="px-2.5 py-0.5 rounded-md bg-[#2329c1] text-white text-[10px] font-bold">
                         {tariff.tariffType}
                       </span>
-                      <span className="text-[11px] text-slate-400">
+                      <span className="text-[11px] text-slate-600">
                         {formatDate(tariff.effectiveDate)}
                       </span>
                     </div>
@@ -163,7 +163,7 @@ export default async function TariffsPage() {
                         <span>ດາວໂຫຼດເອກະສານ (PDF)</span>
                       </a>
                     ) : (
-                      <div className="text-center text-xs text-slate-400 py-1 font-medium">
+                      <div className="text-center text-xs text-slate-600 py-1 font-medium">
                         ມີຜົນບັງຄັບໃຊ້ແລ້ວ
                       </div>
                     )}

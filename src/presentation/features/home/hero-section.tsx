@@ -85,7 +85,7 @@ export function HeroSection() {
               <span className="text-[11px] sm:text-xs font-semibold text-slate-700">
                 ສະຖານະຕາໜ່າງໄຟຟ້າແຫ່ງຊາດ:
               </span>
-              <span className="text-[11px] sm:text-xs font-bold text-emerald-600">ປົກກະຕິ (100%)</span>
+              <span className="text-[11px] sm:text-xs font-bold text-emerald-700">ປົກກະຕິ (100%)</span>
               <span className="hidden sm:inline text-slate-300">|</span>
               <span className="text-[11px] sm:text-xs font-medium text-[#2329c1] flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
@@ -106,18 +106,24 @@ export function HeroSection() {
             </p>
 
             {/* Slide Indicators */}
-            <div className="flex items-center gap-2 pt-1">
+            <div className="flex items-center gap-1.5 pt-1">
               {HERO_SLIDES.map((_, idx) => (
                 <button
                   key={idx}
+                  type="button"
                   onClick={() => setCurrentSlide(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === currentSlide
-                      ? "w-8 bg-[#2329c1]"
-                      : "w-2 bg-slate-300 hover:bg-slate-400"
-                  }`}
+                  className="min-w-[32px] h-8 px-1.5 flex items-center justify-center rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2329c1]"
                   aria-label={`Go to slide ${idx + 1}`}
-                />
+                  aria-pressed={idx === currentSlide}
+                >
+                  <span
+                    className={`h-2 rounded-full transition-all duration-300 block ${
+                      idx === currentSlide
+                        ? "w-8 bg-[#2329c1]"
+                        : "w-2.5 bg-slate-400 hover:bg-slate-500"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
@@ -206,33 +212,37 @@ export function HeroSection() {
                   {/* Live Simulation Card: Power Consumption Preview */}
                   <div className="my-4 sm:my-5 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
                     <div className="flex justify-between items-center gap-2 text-xs">
-                      <span className="text-slate-300">ຈຳລອງການຄິດໄລ່ຄ່າໄຟປະຈຳເດືອນ:</span>
+                      <label htmlFor="hero-kwh-slider" className="text-slate-200">
+                        ຈຳລອງການຄິດໄລ່ຄ່າໄຟປະຈຳເດືອນ:
+                      </label>
                       <span className="font-bold text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20 shrink-0">
                         {simulatedKwh} kWh
                       </span>
                     </div>
 
                     <input
+                      id="hero-kwh-slider"
                       type="range"
                       min="50"
                       max="500"
                       step="5"
                       value={simulatedKwh}
                       onChange={(e) => setSimulatedKwh(Number(e.target.value))}
+                      aria-label="ຈຳລອງການຄິດໄລ່ຄ່າໄຟປະຈຳເດືອນ (kWh)"
                       className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-400"
                     />
 
                     <div className="flex flex-wrap justify-between items-end gap-2 pt-1">
                       <div>
-                        <div className="text-[11px] text-slate-400">ປະມານການຄ່າໄຟ (ທີ່ຢູ່ອາໄສ):</div>
+                        <div className="text-[11px] text-slate-300">ປະມານການຄ່າໄຟ (ທີ່ຢູ່ອາໄສ):</div>
                         <div className="text-lg sm:text-xl font-extrabold text-white">
                           {formatNumber(simulatedKwh * 1350)}{" "}
-                          <span className="text-xs font-normal text-slate-300">ກີບ</span>
+                          <span className="text-xs font-normal text-slate-200">ກີບ</span>
                         </div>
                       </div>
                       <a
                         href="#calculator"
-                        className="text-xs font-medium text-blue-300 hover:text-white flex items-center gap-1 group"
+                        className="text-xs font-medium text-blue-200 hover:text-white flex items-center gap-1 group py-1"
                       >
                         <span>ຄຳນວນລະອຽດ</span>
                         <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -242,16 +252,17 @@ export function HeroSection() {
 
                   {/* Quick Bill Search by Account No. */}
                   <div className="space-y-2">
-                    <label className="text-xs font-medium text-slate-300 block">
+                    <label htmlFor="hero-account-input" className="text-xs font-medium text-slate-200 block">
                       ກວດສອບໃບບິນດ້ວຍເລກບັນຊີລູກຄ້າ:
                     </label>
                     <div className="flex flex-col sm:flex-row gap-2">
                       <input
+                        id="hero-account-input"
                         type="text"
                         placeholder="ປ້ອນເລກບັນຊີຜູ້ຊົມໃຊ້ (ເຊັ່ນ: 0100xxxx)"
                         value={quickInput}
                         onChange={(e) => setQuickInput(e.target.value)}
-                        className="min-w-0 flex-1 bg-white/10 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-400 transition-colors"
+                        className="min-w-0 flex-1 bg-white/10 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-300 focus:outline-none focus:border-blue-400 transition-colors"
                       />
                       <button
                         onClick={() => {
@@ -271,14 +282,14 @@ export function HeroSection() {
                   {/* Grid Stat Footer */}
                   <div className="mt-5 sm:mt-6 pt-4 border-t border-white/10 grid grid-cols-2 gap-2.5 sm:gap-3 text-center">
                     <div className="p-2.5 rounded-xl bg-white/[0.04]">
-                      <div className="text-[11px] sm:text-xs text-slate-400">ກຳລັງການຜະລິດທົ່ວປະເທດ</div>
+                      <div className="text-[11px] sm:text-xs text-slate-300">ກຳລັງການຜະລິດທົ່ວປະເທດ</div>
                       <div className="text-sm sm:text-base font-bold text-amber-300 flex items-center justify-center gap-1">
                         <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0" />
                         <span>8,840 MW</span>
                       </div>
                     </div>
                     <div className="p-2.5 rounded-xl bg-white/[0.04]">
-                      <div className="text-[11px] sm:text-xs text-slate-400">ສູນບໍລິການ & ສາຂາ</div>
+                      <div className="text-[11px] sm:text-xs text-slate-300">ສູນບໍລິການ & ສາຂາ</div>
                       <div className="text-sm sm:text-base font-bold text-white flex items-center justify-center gap-1">
                         <Activity className="w-4 h-4 text-blue-400 shrink-0" />
                         <span>140+ ຈຸດ</span>

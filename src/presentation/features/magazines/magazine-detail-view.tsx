@@ -121,7 +121,7 @@ export function MagazineDetailView({
                       <Calendar className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] text-slate-400 font-medium">
+                      <div className="text-[11px] text-slate-600 font-medium">
                         ວັນທີເຜີຍແຜ່
                       </div>
                       <div className="text-xs sm:text-sm font-bold text-slate-800">
@@ -135,7 +135,7 @@ export function MagazineDetailView({
                       <Eye className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] text-slate-400 font-medium">
+                      <div className="text-[11px] text-slate-600 font-medium">
                         ຍອດດາວໂຫຼດ & ອ່ານ
                       </div>
                       <div className="text-xs sm:text-sm font-bold text-slate-800">
@@ -243,7 +243,7 @@ export function MagazineDetailView({
                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#2329c1] transition-colors line-clamp-2 leading-snug">
                       {item.title}
                     </h3>
-                    <div className="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+                    <div className="mt-2 text-[11px] text-slate-600 flex items-center gap-2">
                       <span>{formatLaoDate(item.publishedDate)}</span>
                       <span>•</span>
                       <span>{formatNumber(getDownloadCount(item))} ດາວໂຫຼດ</span>
